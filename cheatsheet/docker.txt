@@ -1,0 +1,3 @@
+docker build -t mohisa/commandservice .
+docker push mohisa/commandservice 
+docker run -p 8080:80 mohisa/commandservice 

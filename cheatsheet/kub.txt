@@ -1,0 +1,15 @@
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl apply -f platforms-depl.yaml
+kubectl rollout restart deployment platforms-depl #restart image (create new pod)
+kubectl logs <pod-name>
+kubectl get namespace
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.0/deploy/static/provider/cloud/deploy.yaml
+kubectl get pods --namespace=ingress-nginx
+C:\Windows\System32\drivers\etc
+kubectl apply -f .\ingress-srv.yaml
+kubectl apply -f .\local-pvc.yaml
+kubectl get pvc
+kubectl get storageclass
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55word"
