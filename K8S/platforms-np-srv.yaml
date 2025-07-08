@@ -10,5 +10,5 @@ spec:
     - name: http
       protocol: TCP
       port: 80 # The internal ClusterIP port (not mandatory for NodePort)
-      targetPort: 8080 # app listens on 8080
+      targetPort: 80 # app listens on 80
       nodePort: 32686 # Exposed to outside world

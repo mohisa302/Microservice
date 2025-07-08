@@ -1,6 +1,9 @@
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using PlatformService.Dtos;
+using PlatformService.Dtos; 
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace PlatformService.SyncDataServices.Http
 {

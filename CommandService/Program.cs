@@ -20,7 +20,7 @@ void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         app.UseSwaggerUI();
     
 
-    app.UseHttpsRedirection();
+    // app.UseHttpsRedirection();
     app.UseRouting();
     app.UseAuthorization();
     app.UseEndpoints(endpoints =>

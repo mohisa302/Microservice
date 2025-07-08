@@ -1,28 +1,25 @@
+using System.Reflection;      
+using MediatR;                
 // Program.cs
 using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
 using PlatformService.PipelineBehaviors;
-using PlatformService.Queries;
+using PlatformService.SyncDataServices.Http;
 using PlatformService.Validation;
-
+using PlatformService.Queries;
 void ConfigureServices(IServiceCollection services)
 {
     services.AddControllers();
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-    services.AddMediatR(cfg =>
-    {
-        // Scan the assembly that contains any handler or query class
-        cfg.RegisterServicesFromAssemblyContaining<GetAllPlatformsQuery>();
-    });
-    
+
     services.AddValidatorsFromAssemblyContaining<PlatformCreateCommandValidator>();
+    services.AddMediatR(typeof(GetAllPlatformsQuery).Assembly);
 
     services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
-
+    services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
     // services.AddHttpClient<IweatherClinet, openWeatherClinet>(client =>
     // {
     // client.BaseAddress =  new Uri("");
@@ -45,7 +42,7 @@ void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         app.UseSwaggerUI();
     
 
-    app.UseHttpsRedirection();
+    // app.UseHttpsRedirection();
     app.UseRouting();
     app.UseAuthorization();
     app.UseEndpoints(endpoints =>
