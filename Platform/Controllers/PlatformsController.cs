@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using PlatformService.Commands;
 using PlatformService.Data;
 using PlatformService.Dtos;
-using PlatformService.Models;
 using PlatformService.Queries;
 
 namespace PlatformService.Controllers
