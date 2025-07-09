@@ -13,3 +13,13 @@ kubectl apply -f .\local-pvc.yaml
 kubectl get pvc
 kubectl get storageclass
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55word"
+kubectl exec -it mssql-depl-68cf584fc-r8ts9 -- sh -c "ps aux"
+kubectl exec -it mssql-depl-68cf584fc-r8ts9 -- /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'pa55word'
+kubectl exec -it mssql-depl-68cf584fc-r8ts9 -- /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'pa55word'
+PS C:\Users\Mohadeseh Sadeghi\project\Microservice\K8S> kubectl port-forward svc/mssql-clusterip-srv 11433:1433
+Forwarding from 127.0.0.1:11433 -> 1433
+Forwarding from [::1]:11433 -> 1433
+Handling connection for 11433
+Handling connection for 11433
+Handling connection for 11433
+

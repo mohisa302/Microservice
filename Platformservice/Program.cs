@@ -8,7 +8,10 @@ using PlatformService.PipelineBehaviors;
 using PlatformService.SyncDataServices.Http;
 using PlatformService.Validation;
 using PlatformService.Queries;
-void ConfigureServices(IServiceCollection services)
+void ConfigureServices(
+    IServiceCollection services,
+    IWebHostEnvironment env,
+    IConfiguration configuration)
 {
     services.AddControllers();
     services.AddEndpointsApiExplorer();
@@ -26,9 +29,20 @@ void ConfigureServices(IServiceCollection services)
     // });
     //in singleton class:
     //private readonly HttpClient _httpClient; use this for get and ... methods.
+    if (env.IsProduction())
+    {
+         services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("PlatformsConn")));
+        Console.WriteLine("--> Using SQL db.");
 
-    services.AddDbContext<AppDbContext>(options =>
-        options.UseInMemoryDatabase("InMem"));
+    }
+    else
+    {
+
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseInMemoryDatabase("InMem"));
+        Console.WriteLine("--> Using In memeory db.");
+    }
 
     services.AddScoped<IPlatformRepo, PlatformRepo>();
 }
@@ -36,11 +50,13 @@ void ConfigureServices(IServiceCollection services)
 void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
 
+    if (env.IsDevelopment())
+    {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
 
         app.UseSwaggerUI();
-    
+    }
 
     // app.UseHttpsRedirection();
     app.UseRouting();
@@ -49,15 +65,16 @@ void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         endpoints.MapControllers();
     });
-    PrepDb.PrepPupulation(app);
+    PrepDb.PrepPupulation(app, env.IsProduction());
 
 }
 var builder = WebApplication.CreateBuilder(args);
-
-
-ConfigureServices(builder.Services);
+var env = builder.Environment;
+var configuration = builder.Configuration;
+ConfigureServices(builder.Services, env, configuration);
 
 var app = builder.Build();
+
 Configure(app, app.Environment);
 
 
