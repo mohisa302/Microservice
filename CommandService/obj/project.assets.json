@@ -5094,23 +5094,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mohadeseh Sadeghi\\.nuget\\packages\\": {},
+    "C:\\Users\\Dell\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mohadeseh Sadeghi\\project\\Microservice\\CommandService\\CommandService.csproj",
+      "projectUniqueName": "D:\\c# crash course\\Microservice\\CommandService\\CommandService.csproj",
       "projectName": "CommandService",
-      "projectPath": "C:\\Users\\Mohadeseh Sadeghi\\project\\Microservice\\CommandService\\CommandService.csproj",
-      "packagesPath": "C:\\Users\\Mohadeseh Sadeghi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mohadeseh Sadeghi\\project\\Microservice\\CommandService\\obj\\",
+      "projectPath": "D:\\c# crash course\\Microservice\\CommandService\\CommandService.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "D:\\c# crash course\\Microservice\\CommandService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mohadeseh Sadeghi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5195,7 +5195,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

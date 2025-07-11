@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace commandsService.Controllers
 {
-  [Route("api/c/[controller]")]
+  [Route("api/c/platforms/{platformId}/[controller]")]
   [ApiController]
-  public class PlatformsController : ControllerBase
+  public class CommandsController : ControllerBase
   {
     private readonly ICommandRepo _repo;
     private readonly IMapper _mapper;
 
-    public PlatformsController(
+    public CommandsController(
       ICommandRepo repo,
       IMapper mapper
     )
@@ -22,11 +22,11 @@ namespace commandsService.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
+    public ActionResult<IEnumerable<CommandReadDto>> GetAllCommandsForPlatforms(int platId)
     {
-      Console.WriteLine("--> Get Platforms");
-      var platformItems = _repo.GetAllPlatforms();
-      return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItems));
+      Console.WriteLine("--> Get Commands");
+      var commandItems = _repo.GetCommandsForPlatform(platId);
+      return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
     }
 
     [HttpPost]
